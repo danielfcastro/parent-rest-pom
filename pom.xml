@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>parent-rest-pom</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>parent-rest-pom</name>
+	<description>Parent POM para projetos REST JAVA.</description>
+	<parent>
+		<groupId>br.com.danielfcastro</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>1.0</version>
+	</parent>
+	<url>https://github.com/danielfcastro/parent-rest-pom</url>
+	<scm>
+		<url>https://github.com/danielfcastro/parent-rest-pom.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>arquitetura</id>
+			<name>Arquitetura - danielfcastro </name>
+			<organization>danielfcastro </organization>
+			<organizationUrl>https://www.danielfcastro.com.br</organizationUrl>
+		</developer>
+	</developers>
+	<organization>
+		<name>Daniel Ferreira Castro</name>
+		<url>https://github.com/danielfcastro</url>
+	</organization>
+	<properties>
+		<!-- dependencies -->
+		<version.wildfly-parent>10.1.0.Final</version.wildfly-parent>
+		<version.redmond-danielfcastro>1.0.10</version.redmond-danielfcastro>
+		<version.commons-beanutils>1.9.3</version.commons-beanutils>
+		<version.gson>2.8.0</version.gson>
+		<version.swagger-annotation>1.5.13</version.swagger-annotation>
+		<version.org-json-json>20170516</version.org-json-json>
+
+		<!-- tests dependencies -->
+		<version.junit>4.12</version.junit>
+		<version.hamcrest>1.3</version.hamcrest>
+		<version.hamcrest-bean>1.0.11</version.hamcrest-bean>
+		<version.powermock>1.6.5</version.powermock>
+
+		<!-- plugins -->
+		<version.wildfly-maven-plugin>1.1.0.Alpha11</version.wildfly-maven-plugin>
+		<version.healthcheck>1.0.0</version.healthcheck>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Bill of Materials do WildFly -->
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-javaee7-with-tools</artifactId>
+				<version>${version.wildfly-parent}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-module-junit4</artifactId>
+				<scope>test</scope>
+				<version>${version.powermock}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-api-mockito</artifactId>
+				<version>${version.powermock}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${version.hamcrest}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.exparity</groupId>
+				<artifactId>hamcrest-bean</artifactId>
+				<version>${version.hamcrest-bean}</version>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.hamcrest</groupId>
+						<artifactId>hamcrest-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.exparity</groupId>
+						<artifactId>exparity-bean</artifactId>
+					</exclusion>
+					<exclusion>
+						<artifactId>commons-lang</artifactId>
+						<groupId>commons-lang</groupId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson2-provider</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.transaction</groupId>
+			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jsapi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>${version.swagger-annotation}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${version.org-json-json}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.6.5</version><!--$NO-MVN-MAN-VER$ -->
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.6.5</version><!--$NO-MVN-MAN-VER$ -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly-maven-plugin}</version>
+				<configuration>
+					<id>${wildfly-auth-id}</id>
+					<server-groups>
+						<server-group>${wildfly-group-name}</server-group>
+					</server-groups>
+
+					<hostname>${wildfly-hostname}</hostname>
+					<port>${wildfly-port}</port>
+					<runtime-name>${project.artifactId}.war</runtime-name>
+					<matchPattern>${project.artifactId}.*war</matchPattern>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addDefaultSpecificationEntries>
+								true
+							</addDefaultSpecificationEntries>
+							<addDefaultImplementationEntries>
+								true
+							</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-URL>${project.url}</Implementation-URL>
+							<Java-Version>${java.version}</Java-Version>
+							<Java-Vendor>${java.vendor}</Java-Vendor>
+							<Os-Name>${os.name}</Os-Name>
+							<Os-Arch>${os.arch}</Os-Arch>
+							<Os-Version>${os.version}</Os-Version>
+							<Scm-Url>${project.scm.url}</Scm-Url>
+							<Scm-Revision>${buildNumber}</Scm-Revision>
+						</manifestEntries>
+					</archive>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
