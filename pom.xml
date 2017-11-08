@@ -11,6 +11,7 @@
 		<groupId>br.com.danielfcastro</groupId>
 		<artifactId>parent-pom</artifactId>
 		<version>1.0</version>
+		<relativePath>../parent-pom/pom.xml</relativePath>
 	</parent>
 	<url>https://github.com/danielfcastro/parent-rest-pom</url>
 	<scm>
