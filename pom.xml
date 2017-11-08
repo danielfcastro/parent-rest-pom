@@ -230,4 +230,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	<issueManagement>
+		<url>https://github.com/danielfcastro/parent-rest-pom/issues</url>
+		<system>GITHUB</system>
+	</issueManagement>
 </project>
